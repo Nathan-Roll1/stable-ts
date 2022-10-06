@@ -453,9 +453,12 @@ def stabilize_timestamps(segments: Union[List[dict], dict],
     sectioned_segments: List[List] = [[]]
     for i, seg in enumerate(segments, 1):
         sectioned_segments[-1].append(seg)
-        if seg['anchor_point']:
-            if i < len(segments):
-                sectioned_segments.append([])
+        try:
+            if seg['anchor_point']:
+                if i < len(segments):
+                    sectioned_segments.append([])
+        except:
+            pass
 
     assert all(set(len(set(s['offset'] for s in segs)) == 1 for segs in sectioned_segments))
 
