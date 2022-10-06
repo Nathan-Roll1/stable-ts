@@ -36,7 +36,7 @@ modify_model(model)
 # modified model should run just like the regular model but with additional hyperparameters and extra data in results
 results = model.transcribe('audio.mp3')
 stab_segments = results['segments']
-first_segment_token_timestamps = stab_segment[0]['word_timestamps']
+first_segment_token_timestamps = stab_segments[0]['word_timestamps']
 
 # or to get token timestamps that adhere more to the top prediction
 from stable_whisper import stabilize_timestamps
